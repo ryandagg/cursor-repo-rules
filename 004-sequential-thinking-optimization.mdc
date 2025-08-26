@@ -1,7 +1,7 @@
 ---
 description: Optimize Sequential Thinking tool usage for complex problem-solving and multi-step reasoning tasks
 globs: **/*
-alwaysApply: false
+alwaysApply: true
 ---
 # Sequential Thinking Tool Optimization Guide
 

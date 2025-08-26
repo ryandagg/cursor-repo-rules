@@ -1,7 +1,7 @@
 ---
-description:
+description: Cursor File and Context Optimization Rule
 globs: **/*
-alwaysApply: false
+alwaysApply: true
 ---
 # Cursor File and Context Optimization Rule
 
