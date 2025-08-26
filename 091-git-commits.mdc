@@ -15,3 +15,5 @@ alwaysApply: true
 - Check for proper error handling
 - Ensure consistent coding style
 - Validate security best practices
+- For JavaScript files only: ensure JSDoc added/updated for all changed functions/classes/modules
+- For JavaScript files only: validate that `@param`/`@returns` tags match implementation signatures

@@ -1,0 +1,68 @@
+---
+description: Require JSDoc annotations for all added or modified JavaScript code
+globs: ["**/*.js"]
+alwaysApply: true
+---
+
+# JSDoc Annotations Requirement (JavaScript only)
+
+To improve readability, IDE help, and type safety in this JavaScript codebase, all added or modified JavaScript files must include accurate JSDoc annotations. This requirement applies only to JavaScript (`*.js`) files; TypeScript files should use TypeScript types and do not require JSDoc.
+
+## Scope
+
+- Applies to all changes in `*.js` files (including Ember components, services, models, routes, utilities, and tests when practical).
+- TypeScript files (`*.ts`, `*.tsx`) are out of scope for this rule and should rely on TypeScript types instead of JSDoc.
+
+## Requirements
+
+- Add or update JSDoc for any changed:
+  - Functions (named, arrow, methods)
+  - Classes and class methods
+  - Modules exporting functions or objects
+  - Complex object shapes used across files (define `@typedef`)
+
+- Minimum content per function/method:
+  - One-line summary sentence
+  - `@param` for each parameter with type and name
+  - `@returns` with type (omit only if `void`/no return)
+  - `@throws` when applicable
+
+- Object shapes and event payloads:
+  - Use `@typedef` to document reusable shapes
+  - Reference via `@param {MyType}` or inline `{Object}` with fields
+
+- Keep annotations in sync:
+  - When signatures change, update corresponding JSDoc in the same edit
+  - Remove stale tags; ensure names match parameter identifiers
+
+## Examples
+
+```js
+/**
+ * Fetch an app by id.
+ * @param {string} appId - Heroku app identifier.
+ * @param {{ includeDynos?: boolean }} [options] - Optional fetch options.
+ * @returns {Promise<import('./types').App>} Resolves with the app record.
+ */
+export async function fetchApp(appId, options = {}) { /* ... */ }
+```
+
+```js
+/** @typedef {Object} PipelineInfo
+ *  @property {string} id
+ *  @property {string} name
+ *  @property {Array<string>} stages
+ */
+```
+
+## Acceptance Checklist (LLM and reviewer)
+
+- All changed functions/methods have JSDoc with `@param` and `@returns` as appropriate
+- Tag names and counts match the actual parameters
+- Complex objects documented via `@typedef` when reused
+- Removed or updated any stale JSDoc after signature changes
+
+---
+
+This rule exists to encourage accurate, maintainable documentation without introducing new dependencies.
+
