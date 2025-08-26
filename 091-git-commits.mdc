@@ -1,0 +1,22 @@
+---
+description:
+globs: **/*
+alwaysApply: false
+---
+---
+description: Git commit guidelines and automatic commit reminders
+alwaysApply: true
+---
+
+# Git Commit Guidelines
+
+## Commit Size Enforcement
+- Maximum 200 lines changed per commit
+- Split large changes into logical chunks
+- Each commit should be independently testable
+
+## AI-Generated Code Review Checklist
+- Verify no code duplication (DRY principle)
+- Check for proper error handling
+- Ensure consistent coding style
+- Validate security best practices

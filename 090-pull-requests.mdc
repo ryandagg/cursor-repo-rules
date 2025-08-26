@@ -1,0 +1,45 @@
+---
+description: Pull Request Scope Optimization for Human Code Review Efficiency
+globs:
+alwaysApply: false
+---
+## GitHub Flow workflow and GitHub Actions integration
+
+**Comprehensive PR validation workflow:**
+
+## PR templates and commit message standards
+
+**Production-ready PR template** for immediate implementation:
+
+```markdown
+
+## Why the change?
+<!-- link to GUS issue(s) with a written explanation-->
+GUS Ticket: []()
+
+<!-- 🚨 Make sure you include a link that explains the motivation of this change. Otherwise, you'll likely see the following message after the PR has been approved: `Missing change request URL for SOC2` 🚨 -->
+
+## Screenshots & Gifs
+<!-- when applicable, please include before and after screenshots -->
+
+## Who should review this?
+
+Request additional reviewers from these teams,
+
++ when changing customer-facing text
+  - [heroku-cx](mdc:dashboard/https:/github.com/orgs/heroku/teams/heroku-cx): `@SandyPantsLai`, `@heicheng18`, `@claire-riley`
+
+## How to verify?
+<!-- A *list* of steps that the reviewer may step through to fully experience the change set being introduced -->
++ visit the PR app
++
+
+<!-- Uncomment lines below if extra information needs communicated about these changes -->
+<!--
+---
+> [!IMPORTANT]
+> text goes here
+>
+---
+-->
+```

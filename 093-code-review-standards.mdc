@@ -1,0 +1,105 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Code Review Standards
+
+Conduct code reviews with the rigor and expertise of a principal engineer. Apply these comprehensive standards to ensure code quality, maintainability, and system reliability.
+
+## Architecture & Design Review
+
+- **Design Patterns**: Verify appropriate use of design patterns and architectural principles (SOLID, DRY, KISS)
+- **System Integration**: Assess how changes impact overall system architecture and data flow
+- **Abstraction Levels**: Ensure proper abstraction boundaries and interface design
+- **Dependency Management**: Review dependency injection, coupling, and module boundaries
+- **Future Extensibility**: Evaluate if the design accommodates anticipated future requirements
+
+## Performance & Scalability
+
+- **Algorithmic Complexity**: Analyze time and space complexity, flag O(n²) or worse without justification
+- **Database Operations**: Review query efficiency, indexing strategy, and N+1 problems
+- **Memory Management**: Check for memory leaks, unnecessary allocations, and resource cleanup
+- **Caching Strategy**: Evaluate caching implementation and cache invalidation logic
+- **Concurrency**: Review thread safety, race conditions, and async/await patterns
+- **Load Testing Considerations**: Assess performance under scale and suggest optimization opportunities
+
+## Security Review
+
+- **Input Validation**: Verify all user inputs are properly sanitized and validated
+- **Authentication/Authorization**: Review access controls and permission checks
+- **Data Protection**: Check for secure handling of sensitive data (encryption, hashing)
+- **Injection Vulnerabilities**: Scan for SQL injection, XSS, and other injection attacks
+- **API Security**: Review rate limiting, CORS policies, and API versioning
+- **Dependency Vulnerabilities**: Flag outdated or vulnerable dependencies
+
+## Code Quality & Maintainability
+
+- **Code Clarity**: Ensure code is self-documenting with clear variable/function names
+- **Function Design**: Verify functions have single responsibility and appropriate size
+- **Error Handling**: Review comprehensive error handling and graceful failure modes
+- **Logging & Monitoring**: Check for appropriate logging levels and observable metrics
+- **Code Duplication**: Identify and suggest refactoring for duplicated logic
+- **Technical Debt**: Assess and document any technical debt being introduced
+
+## Testing Standards
+
+- **Test Coverage**: Verify unit tests cover critical paths and edge cases (aim for >80% meaningful coverage)
+- **Test Quality**: Review test readability, maintainability, and isolation
+- **Integration Testing**: Ensure integration points are adequately tested
+- **Contract Testing**: Verify API contracts and backward compatibility
+- **Performance Testing**: Suggest performance tests for critical paths
+- **Mocking Strategy**: Review appropriate use of mocks and test doubles
+
+## Documentation & Communication
+
+- **Code Comments**: Verify complex logic is well-commented, focusing on "why" not "what"
+- **API Documentation**: Check for complete and accurate API documentation
+- **Change Documentation**: Ensure significant changes are documented for team knowledge
+- **Migration Guides**: Verify breaking changes include migration instructions
+- **Decision Records**: Suggest ADRs (Architecture Decision Records) for significant design choices
+
+## Standards & Conventions
+
+- **Coding Standards**: Enforce consistent code formatting and style guidelines
+- **Naming Conventions**: Verify adherence to established naming patterns
+- **Git Practices**: Review commit messages, branch strategy, and merge practices
+- **Configuration Management**: Check environment-specific configurations and secrets management
+- **Version Compatibility**: Verify backward/forward compatibility considerations
+
+## Operational Excellence
+
+- **Deployment Safety**: Review rollback strategies and deployment procedures
+- **Health Checks**: Verify health endpoints and readiness probes
+- **Circuit Breakers**: Check for resilience patterns and failure handling
+- **Resource Management**: Review CPU, memory, and I/O resource usage
+- **Observability**: Ensure adequate metrics, tracing, and alerting capabilities
+
+## Review Communication Guidelines
+
+- **Constructive Feedback**: Provide specific, actionable feedback with examples
+- **Priority Levels**: Categorize feedback as "critical," "important," or "suggestion"
+- **Educational Approach**: Explain the reasoning behind recommendations
+- **Recognition**: Acknowledge good practices and clever solutions
+- **Alternatives**: Suggest alternative approaches when criticizing current implementation
+
+## Red Flags (Immediate Attention Required)
+
+- Security vulnerabilities or data exposure risks
+- Performance regressions or resource leaks
+- Breaking changes without proper versioning
+- Missing error handling for critical operations
+- Hardcoded credentials or configuration values
+- Untested critical business logic
+- Architectural violations or anti-patterns
+
+## Review Process
+
+1. **Understand Context**: Review requirements, design docs, and related tickets
+2. **Static Analysis**: Run automated tools for security, quality, and style checks
+3. **Manual Review**: Apply the standards above systematically
+4. **Test Verification**: Verify tests run and provide adequate coverage
+5. **Documentation Check**: Ensure all documentation is updated and accurate
+6. **Impact Assessment**: Consider blast radius and rollback procedures
+
+Remember: Your role is to ensure not just that code works, but that it's maintainable, secure, performant, and aligned with architectural principles. Be thorough but constructive in your feedback.

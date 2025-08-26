@@ -1,0 +1,48 @@
+---
+description: "Memory-Based Interaction Optimization"
+globs:
+alwaysApply: true
+---
+
+# Progressive Knowledge Building
+Build on established context rather than repeating information.
+
+## Memory Reference Patterns
+- **Before explaining**: Check if concept was recently covered in memory
+- **Reference previous context**: "As established in our earlier architecture discussion..."
+- **Build incrementally**: Extend existing knowledge rather than starting over
+- **Track understanding levels**: Store user's demonstrated expertise for each domain
+
+## Context Persistence Strategy
+```json
+{
+  "session_memory": {
+    "current_project": "oauth-proxy-server",
+    "established_patterns": ["JWT authentication", "PKCE implementation"],
+    "architecture_decisions": ["microservices with API gateway"],
+    "team_preferences": ["TypeScript", "fastify framework", "Docker deployment"],
+    "recent_context": ["implementing token refresh flow"]
+  },
+  "long_term_memory": {
+    "user_expertise": {"OAuth": "advanced", "CLI": "intermediate", "MCP": "learning"},
+    "preferred_patterns": ["test-driven development", "infrastructure as code"],
+    "avoided_patterns": ["custom session management", "synchronous processing"]
+  }
+}
+```
+
+## Configuration Requirements
+Ensure Sequential Thinking server is configured in MCP settings:
+```json
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+      ]
+    }
+  }
+}
+```

@@ -1,0 +1,170 @@
+---
+description: Optimize Sequential Thinking tool usage for complex problem-solving and multi-step reasoning tasks
+globs: **/*
+alwaysApply: false
+---
+# Sequential Thinking Tool Optimization Guide
+
+## When to Use Sequential Thinking
+
+**ALWAYS use Sequential Thinking for:**
+- Complex problems requiring 5+ reasoning steps (16% performance improvement documented)
+- Multi-step debugging and troubleshooting processes
+- Code architecture planning and system design
+- Strategic planning with multiple constraints
+- Complex API integrations with multiple tool calls
+- Mathematical calculations with intermediate steps
+- Policy navigation requiring step-by-step compliance
+- Research synthesis from multiple sources
+
+**NEVER use Sequential Thinking for:**
+- Simple, single-step tasks (24% performance degradation risk)
+- Direct code completion or basic syntax help
+- Straightforward documentation requests
+- Simple fact-finding queries
+- Basic CRUD operations
+- One-line fixes or minor adjustments
+
+## Optimal Usage Patterns
+
+### Task Complexity Assessment
+Before using Sequential Thinking, evaluate:
+```
+IF problem requires multiple dependent steps AND
+   solution complexity > 3 logical components AND
+   error cost is high
+THEN use Sequential Thinking
+ELSE use standard approach
+```
+
+### Tool Invocation Structure
+When using Sequential Thinking tools:
+
+1. **Start with `process_thought`** for the first reasoning step:
+   ```json
+   {
+     "thought": "Clear description of current step",
+     "thoughtNumber": 1,
+     "totalThoughts": 5, // Conservative estimate (5-10 typical)
+     "nextThoughtNeeded": true
+   }
+   ```
+2. **Continue with subsequent steps**, incrementing thoughtNumber
+3. **Use `generate_summary`** when reasoning chain is complete
+4. **Use `clear_history`** only when starting entirely new problem context
+
+### Prompt Engineering for Sequential Thinking
+
+**PREFERRED Prompt Structure:**
+```
+Problem: [Clear, direct problem statement]
+Context: [Minimal necessary background]
+Expected approach: Step-by-step reasoning
+Output format: [Specify if needed]
+```
+
+**AVOID:**
+- Few-shot examples (degrades reasoning model performance)
+- Overly complex context
+- Multiple simultaneous problem statements
+- Vague or ambiguous instructions
+
+## Performance Optimization
+
+### Resource Management
+- **Estimate thoughtNumber conservatively** (better to extend than over-estimate)
+- **Use branching (`branchFromThought`, `branchId`)** for exploring alternatives
+- **Implement revisions (`isRevision: true, revisesThought: N`)** for iterative improvement
+- **Monitor totalThoughts vs actual** - adjust as needed with `needsMoreThoughts: true`
+
+### Quality Assurance
+- **Validate each step** before proceeding to next thought
+- **Cross-reference with external sources** when possible
+- **Document reasoning assumptions** explicitly in thought content
+- **Flag uncertain reasoning** for human review
+
+## Implementation Best Practices
+
+### For Code Development
+```markdown
+When architecting complex systems:
+1. Break down requirements into discrete components
+2. Use Sequential Thinking to plan integration points
+3. Identify potential failure modes at each step
+4. Document reasoning trail for future reference
+```
+
+### For Debugging
+```markdown
+When troubleshooting complex issues:
+1. Define problem symptoms clearly
+2. Systematically eliminate potential causes
+3. Test hypotheses in logical sequence
+4. Document findings for pattern recognition
+```
+
+### For Research and Analysis
+```markdown
+When synthesizing information:
+1. Identify key information sources
+2. Extract relevant data points sequentially
+3. Analyze relationships between findings
+4. Build conclusions based on evidence chain
+```
+
+## Error Handling
+
+### Common Failure Modes
+- **Context overflow**: Keep thoughts concise, use `clear_history` if needed
+- **Reasoning drift**: Regularly validate steps against original problem
+- **Overcomplication**: Simplify if reasoning becomes circular
+
+### Fallback Strategies
+```markdown
+If Sequential Thinking fails:
+1. Simplify problem statement
+2. Reduce totalThoughts estimate
+3. Break into smaller sub-problems
+4. Switch to standard approach for time-sensitive tasks
+```
+
+### Verification Methods
+- **External tool validation**: Use APIs, databases, or calculations to verify reasoning
+- **Consistency checking**: Ensure logical flow between thoughts
+- **Sanity testing**: Validate conclusions against known constraints
+
+## MCP Integration Notes
+
+### Configuration Requirements
+Ensure Sequential Thinking server is configured in MCP settings:
+```json
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  }
+}
+```
+
+### Environment Variables
+- Set `DISABLE_THOUGHT_LOGGING: "true"` for privacy-sensitive work
+- Monitor server health and restart if tools become unresponsive
+
+## Success Metrics
+
+Track Sequential Thinking effectiveness:
+- **Problem resolution time** for complex tasks
+- **Solution quality** compared to standard approach
+- **Error reduction** in multi-step processes
+- **User satisfaction** with reasoning transparency
+
+## Reference Files
+
+@docs/architecture/reasoning-patterns.md
+@config/mcp-settings.json
+
+---
+
+**Remember**: Sequential Thinking is a powerful tool for complex reasoning but has 50-100x computational overhead. Use strategically for maximum benefit.

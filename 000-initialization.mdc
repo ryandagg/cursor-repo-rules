@@ -1,0 +1,768 @@
+---
+description: Master initialization rule for comprehensive project analysis and setup
+globs:
+alwaysApply: false
+---
+
+# Project Initialization and Analysis
+
+You are an expert AI assistant specialized in comprehensive codebase analysis and development support. Your primary objective is to thoroughly understand any project and provide contextual assistance.
+
+## Initialization Process
+
+Execute this process systematically for new projects or comprehensive reviews:
+
+### Phase 1: Discovery and Analysis
+1. **Repository Structure Analysis**
+   - Scan entire directory structure using tree commands
+   - Identify root-level configuration files (package.json, requirements.txt, go.mod, etc.)
+   - Map directory organization and naming conventions
+   - Catalog documentation files and READMEs
+
+2. **Technology Stack Detection**
+   - Analyze package managers and dependency files
+   - Identify frameworks, libraries, and tools
+   - Determine programming languages and versions
+   - Document build systems and deployment configurations
+
+3. **Codebase Pattern Recognition**
+   - Identify architectural patterns (MVC, microservices, monolith)
+   - Analyze design patterns and code organization
+   - Document naming conventions and code structure
+   - Map component relationships and dependencies
+
+4. **Recent Activity Analysis**
+   - Review git history for recent changes: `git log --oneline --since="30 days ago"`
+   - Identify active development areas: `git log --stat --since="7 days ago"`
+   - Analyze commit patterns and contributors: `git shortlog -sn --since="90 days ago"`
+   - Document development velocity and patterns
+
+5. **Existing Cursor Rules**
+   - Search for existing cursor rules in the ./.cursor/rules that follow the format `/\d{3}-.+.mdc/`
+   - Document the existing rules, what they are used for, whether they are alaways applied, auto-attached, manually applied, or agent requested.
+
+### Phase 2: Rule Generation
+After analysis, automatically generate:
+- **Application Context Rule** (001-application-context.mdc)
+- **Coding Standards Rule** (010-coding-standards.mdc)
+- **AI Evaluation Documentation** (docs/AI_EVALUATION.md)
+
+### Phase 3: Validation and Refinement
+- Cross-reference generated rules with existing documentation and rules
+- Validate technical accuracy against codebase reality
+- Ensure consistency across all generated materials
+- Update rules based on findings
+
+## Analysis Commands Example
+
+### Node.js/JavaScript Projects
+```bash
+# Dependency analysis
+npm audit --audit-level=moderate
+npm outdated
+npx license-checker --summary
+
+# Code quality
+npx eslint . --ext .js,.jsx,.ts,.tsx --format=json
+npx prettier --check "**/*.{js,jsx,ts,tsx,json,md}"
+
+# Bundle analysis
+npx webpack-bundle-analyzer build/static/js/*.js
+```
+
+Note: Use the Web Search tool to find the most up-to-date examples for the project technology stack.
+
+## File Reference Strategy
+
+Always reference key files for context:
+- @README.md
+- @package.json (Node.js)
+- @requirements.txt (Python)
+- @go.mod (Go)
+- @Gemfile (Ruby)
+- @tsconfig.json (TypeScript)
+- @docker-compose.yml
+- @.github/workflows/*.yml
+- @docs/architecture.md
+- @CHANGELOG.md
+
+@001-application-context.mdc
+@002-coding-standards.mdc
+
+## Application Context Rule Template
+
+Create this as `.cursor/rules/001-application-context.mdc`:
+
+```markdown
+---
+description: Comprehensive application context and architecture
+globs: ["**/*.{js,jsx,ts,tsx,py,go,rb,ex,exs}"]
+alwaysApply: true
+---
+
+# Application Context and Architecture
+
+## Project Overview
+**Project Name**: [Auto-detected from package.json/config]
+**Type**: [Web Application/API/Mobile App/Library/Tool]
+**Purpose**: [Brief description from README or initial analysis]
+
+## Technology Stack
+
+### Core Technologies
+- **Language**: [Primary language and version]
+- **Framework**: [Main framework and version]
+- **Runtime**: [Node.js, Python, Go, JVM version]
+- **Database**: [Database type and version]
+
+### Frontend Stack (if applicable)
+- **UI Framework**: [React, Vue, Angular, etc.]
+- **Styling**: [CSS framework, styling approach]
+- **State Management**: [Redux, Zustand, Context, etc.]
+- **Build Tools**: [Webpack, Vite, Rollup, etc.]
+
+### Backend Stack (if applicable)
+- **Web Framework**: [Express, FastAPI, Gin, Spring, etc.]
+- **ORM/Database**: [Prisma, SQLAlchemy, GORM, etc.]
+- **Authentication**: [JWT, OAuth, sessions, etc.]
+- **API Style**: [REST, GraphQL, gRPC, etc.]
+
+## Development Commands
+
+### Setup and Installation
+\```bash
+# Initial setup
+[Installation commands based on detected package manager]
+
+# Environment setup
+[Environment variable setup]
+
+# Database setup
+[Database migration/setup commands]
+\```
+
+### Development Workflow
+\```bash
+# Start development server
+[Development start command]
+
+# Run tests
+[Test execution commands]
+
+# Build for production
+[Build commands]
+
+# Deployment
+[Deployment commands]
+\```
+
+### Quality Assurance
+\```bash
+# Linting and formatting
+[Linting commands]
+
+# Type checking (if applicable)
+[Type checking commands]
+
+# Security scanning
+[Security scan commands]
+\```
+
+## Architecture Overview
+
+### System Architecture
+- **Pattern**: [Monolith/Microservices/Serverless/JAMstack]
+- **Data Flow**: [Description of data flow patterns]
+- **External Services**: [APIs, databases, third-party services]
+
+### Directory Structure
+\```
+[Auto-generated directory tree showing key folders and their purposes]
+project/
+├── src/               # Source code
+├── tests/            # Test files
+├── docs/             # Documentation
+├── config/           # Configuration files
+└── scripts/          # Build/deployment scripts
+\```
+
+### Key Components
+- **[Component 1]**: [Purpose and location]
+- **[Component 2]**: [Purpose and location]
+- **[Component 3]**: [Purpose and location]
+
+## Main Features
+
+### Core Functionality
+1. **[Feature 1]**: [Description and implementation location]
+2. **[Feature 2]**: [Description and implementation location]
+3. **[Feature 3]**: [Description and implementation location]
+
+### Recent Additions
+[Based on git analysis of recent commits]
+
+## Testing Strategy
+
+### Test Structure
+- **Unit Tests**: [Location and framework]
+- **Integration Tests**: [Location and approach]
+- **E2E Tests**: [Framework and coverage]
+
+### Coverage and Quality
+- **Current Coverage**: [If detectable]
+- **Test Commands**: [How to run different test types]
+- **CI/CD Integration**: [Testing in pipelines]
+
+## Documentation Overview
+
+### Available Documentation
+- **README.md**: [Summary of contents]
+- **API Documentation**: [Location and format]
+- **Architecture Docs**: [Location and completeness]
+- **Deployment Guides**: [Location and currency]
+
+### Documentation Gaps
+[Identified areas needing documentation]
+
+@README.md
+@docs/architecture.md
+@package.json
+```
+
+## Coding Standards Rule Template
+
+Create this as `.cursor/rules/02-coding-standards.mdc`:
+
+```markdown
+---
+description: Project-specific coding standards and best practices
+globs: ["**/*.{js,jsx,ts,tsx,py,go,rb,ex,exs}"]
+alwaysApply: false
+---
+
+# Coding Standards and Best Practices
+
+## Universal Principles
+
+### Code Quality
+- Write self-documenting code with clear, descriptive names
+- Follow SOLID principles and maintain single responsibility
+- Implement comprehensive error handling with appropriate logging
+- Maintain consistent code formatting and style
+- Write unit tests for all business logic
+
+### Performance and Security
+- Optimize for readability first, performance second
+- Validate all inputs and sanitize outputs
+- Follow principle of least privilege
+- Implement proper authentication and authorization
+- Use secure coding practices appropriate to the stack
+
+## Language-Specific Standards
+
+### Example: JavaScript/TypeScript
+\```typescript
+// DO: Use explicit types and interfaces
+interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  createdAt: Date;
+}
+
+const createUser = async (userData: Omit<UserProfile, 'id' | 'createdAt'>): Promise<UserProfile> => {
+  // Implementation with proper error handling
+};
+
+// DON'T: Use any types or implicit returns without clarity
+const processData = (data: any) => {
+  // Unclear implementation
+};
+\```
+
+## Framework-Specific Patterns
+
+### Frontend Components (React Example)
+\```tsx
+// DO: Use proper TypeScript interfaces and clear component structure
+interface ButtonProps {
+  variant: 'primary' | 'secondary' | 'danger';
+  size?: 'small' | 'medium' | 'large';
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  children: React.ReactNode;
+  disabled?: boolean;
+}
+
+export const Button: React.FC<ButtonProps> = ({
+  variant,
+  size = 'medium',
+  onClick,
+  children,
+  disabled = false,
+}) => {
+  const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
+    if (!disabled) {
+      onClick(event);
+    }
+  }, [onClick, disabled]);
+
+  return (
+    <button
+      className={`btn btn-${variant} btn-${size}`}
+      onClick={handleClick}
+      disabled={disabled}
+      type="button"
+    >
+      {children}
+    </button>
+  );
+};
+
+// DON'T: Use any types or unclear prop definitions
+const SomeButton = (props: any) => <button {...props} />;
+\```
+
+### Backend API Patterns (Express Example)
+\```typescript
+// DO: Use proper middleware, validation, and error handling
+import { Request, Response, NextFunction } from 'express';
+import { z } from 'zod';
+
+const CreateUserSchema = z.object({
+  name: z.string().min(1).max(100),
+  email: z.string().email(),
+});
+
+export const createUser = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> => {
+  try {
+    const userData = CreateUserSchema.parse(req.body);
+    const user = await userService.createUser(userData);
+    res.status(201).json({ data: user, message: 'User created successfully' });
+  } catch (error) {
+    next(error); // Proper error handling
+  }
+};
+
+// DON'T: Skip validation or proper error handling
+export const badCreateUser = (req: any, res: any) => {
+  const user = createUserDirectly(req.body); // No validation
+  res.json(user); // No error handling
+};
+\```
+
+## Testing Standards
+
+### Unit Testing
+\```typescript
+// DO: Write clear, focused tests with proper setup and assertions
+describe('UserService', () => {
+  let userService: UserService;
+  let mockRepository: jest.Mocked<UserRepository>;
+
+  beforeEach(() => {
+    mockRepository = createMockUserRepository();
+    userService = new UserService(mockRepository);
+  });
+
+  describe('createUser', () => {
+    it('should create user with valid data', async () => {
+      // Arrange
+      const userData = { name: 'John Doe', email: 'john@example.com' };
+      mockRepository.save.mockResolvedValue({ id: '123', ...userData });
+
+      // Act
+      const result = await userService.createUser(userData);
+
+      // Assert
+      expect(result).toEqual({ id: '123', ...userData });
+      expect(mockRepository.save).toHaveBeenCalledWith(userData);
+    });
+
+    it('should throw error for invalid email', async () => {
+      // Arrange
+      const userData = { name: 'John Doe', email: 'invalid-email' };
+
+      // Act & Assert
+      await expect(userService.createUser(userData)).rejects.toThrow('Invalid email');
+    });
+  });
+});
+\```
+
+## Recent Examples from Codebase
+
+### Recently Updated Files (Template)
+[Auto-populate based on git analysis]
+- **[File 1]**: [Recent changes and patterns used]
+- **[File 2]**: [Recent changes and patterns used]
+- **[File 3]**: [Recent changes and patterns used]
+
+### Emerging Patterns
+[Based on analysis of recent commits]
+- **[Pattern 1]**: [Description and usage examples]
+- **[Pattern 2]**: [Description and usage examples]
+
+## Project-Specific Conventions
+
+### Naming Conventions
+- **Files**: [Project-specific naming pattern]
+- **Variables**: [camelCase, snake_case, etc.]
+- **Functions**: [Naming pattern and verb conventions]
+- **Classes/Types**: [PascalCase, etc.]
+
+### File Organization
+- **Component Structure**: [How components are organized]
+- **Test Location**: [Where tests are placed relative to source]
+- **Asset Management**: [How static assets are organized]
+
+### Import/Export Patterns
+\```typescript
+// DO: Use consistent import organization
+import React from 'react';
+import { useState, useEffect } from 'react';
+
+import { Button } from '@/components/ui/Button';
+import { userService } from '@/services/userService';
+import { UserType } from '@/types/user';
+
+import './ComponentName.css';
+
+// DON'T: Mix import styles or use unclear paths
+import * as React from 'react';
+import { Button } from '../../components/Button';
+\```
+
+@README.md
+@package.json
+@examples/
+@tests/
+```
+
+## AI Evaluation Documentation Template
+
+Create this as `docs/AI_EVALUATION.md`:
+
+```markdown
+# AI-Assisted Development Evaluation
+
+**Generated**: [Date]
+**Project**: [Project Name]
+**Version**: [Current Version]
+
+## Executive Summary
+
+This document provides a comprehensive evaluation of the codebase from an AI-assisted development perspective, including strengths, weaknesses, infrastructure recommendations, and opportunities for improvement.
+
+## Codebase Strengths
+
+### Code Quality Metrics
+- **Maintainability Index**: [Calculated or estimated score]
+- **Test Coverage**: [Percentage if available]
+- **Complexity Score**: [Cyclomatic complexity average]
+- **Documentation Coverage**: [Percentage of documented functions/classes]
+
+### Architecture Strengths
+- **[Strength 1]**: [Detailed explanation with examples]
+- **[Strength 2]**: [Detailed explanation with examples]
+- **[Strength 3]**: [Detailed explanation with examples]
+
+### Development Practices
+- **Version Control**: [Git hygiene, branching strategy effectiveness]
+- **Testing Strategy**: [Current testing approach evaluation]
+- **Code Review Process**: [If observable from commit history]
+- **Documentation Quality**: [README, inline docs, architecture docs]
+
+## Identified Weaknesses
+
+### Technical Debt Areas
+- **[Weakness 1]**: [Description, impact, and recommended remediation]
+- **[Weakness 2]**: [Description, impact, and recommended remediation]
+- **[Weakness 3]**: [Description, impact, and recommended remediation]
+
+### Security Concerns
+- **[Security Issue 1]**: [Description and recommended fix]
+- **[Security Issue 2]**: [Description and recommended fix]
+
+### Performance Bottlenecks
+- **[Performance Issue 1]**: [Description and optimization opportunities]
+- **[Performance Issue 2]**: [Description and optimization opportunities]
+
+## Infrastructure Recommendations
+
+### Development Environment
+\```bash
+# Recommended development setup improvements
+# Container-based development
+docker-compose up -d
+
+# Enhanced linting and formatting
+npm install -D eslint prettier husky lint-staged
+
+# Security scanning setup
+npm install -D audit-ci
+\```
+
+### CI/CD Enhancements
+\```yaml
+# Recommended GitHub Actions workflow additions
+name: Enhanced CI
+on: [push, pull_request]
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test:coverage
+      - run: npm audit --audit-level=moderate
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+\```
+
+### Monitoring and Observability
+- **Application Monitoring**: [Recommended tools and setup]
+- **Error Tracking**: [Sentry, Rollbar, or similar setup]
+- **Performance Monitoring**: [APM tool recommendations]
+- **Log Management**: [Centralized logging strategy]
+
+## Dependency Health Evaluation
+
+### Current Dependency Status
+\```bash
+# Node.js dependency health check
+npm audit --audit-level=moderate
+npm outdated
+npx license-checker --summary
+
+# Python dependency health check
+pip-audit --format=table
+pip list --outdated
+safety check
+
+# Go dependency health check
+go list -u -m all
+govulncheck ./...
+
+# Java dependency health check
+mvn dependency:tree
+mvn versions:display-dependency-updates
+mvn org.owasp:dependency-check-maven:check
+\```
+
+### Dependency Recommendations
+- **Critical Updates**: [Security-related dependency updates needed]
+- **Version Upgrades**: [Major version upgrades to consider]
+- **Unused Dependencies**: [Dependencies that can be removed]
+- **License Compliance**: [License compatibility issues]
+
+### Automated Dependency Management
+\```yaml
+# Dependabot configuration example
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "team-leads"
+    assignees:
+      - "maintainer"
+\```
+
+## Security Updates and Recommendations
+
+### Current Security Posture
+- **Vulnerability Scan Results**: [Current known vulnerabilities]
+- **Security Headers**: [HTTP security headers analysis]
+- **Authentication/Authorization**: [Current implementation evaluation]
+- **Data Protection**: [Encryption, sanitization practices]
+
+### Recommended Security Enhancements
+\```bash
+# Security scanning tools setup
+npm install -D eslint-plugin-security
+npm install -D @typescript-eslint/eslint-plugin
+
+# Git hooks for security
+npx husky add .husky/pre-commit "npm run security-check"
+
+# Environment security
+echo "NODE_ENV=production" >> .env.production
+echo "SECURE_SSL_REDIRECT=true" >> .env.production
+\```
+
+### Security Checklist
+- [ ] Input validation on all user inputs
+- [ ] SQL injection prevention (parameterized queries)
+- [ ] Cross-site scripting (XSS) protection
+- [ ] Cross-site request forgery (CSRF) protection
+- [ ] Secure authentication implementation
+- [ ] Proper error handling (no sensitive data exposure)
+- [ ] Regular dependency security updates
+- [ ] Environment variable security
+- [ ] API rate limiting
+- [ ] Logging of security events
+
+## Refactoring Opportunities
+
+### Code Quality Improvements
+1. **[Refactoring Opportunity 1]**
+   - **Current State**: [Description of current implementation]
+   - **Proposed Solution**: [Detailed refactoring approach]
+   - **Benefits**: [Expected improvements]
+   - **Effort Estimate**: [Time/complexity estimate]
+
+2. **[Refactoring Opportunity 2]**
+   - **Current State**: [Description of current implementation]
+   - **Proposed Solution**: [Detailed refactoring approach]
+   - **Benefits**: [Expected improvements]
+   - **Effort Estimate**: [Time/complexity estimate]
+
+### Architecture Improvements
+- **Modularization**: [Opportunities to break down monolithic components]
+- **Dependency Injection**: [Areas where DI could improve testability]
+- **Design Pattern Implementation**: [Beneficial patterns to introduce]
+- **Performance Optimizations**: [Specific optimization opportunities]
+
+### Technical Debt Prioritization
+| Priority | Issue | Impact | Effort | ROI |
+|----------|-------|--------|--------|-----|
+| High | [Issue 1] | [Impact description] | [Effort estimate] | [ROI justification] |
+| Medium | [Issue 2] | [Impact description] | [Effort estimate] | [ROI justification] |
+| Low | [Issue 3] | [Impact description] | [Effort estimate] | [ROI justification] |
+
+## Development Workflow Recommendations
+
+### AI Integration Strategy
+- **Code Generation**: [Recommended AI tools and usage patterns]
+- **Code Review**: [AI-assisted review tool recommendations]
+- **Testing**: [AI-powered test generation opportunities]
+- **Documentation**: [Automated documentation generation setup]
+
+### Quality Assurance Enhancements
+\```json
+{
+  "scripts": {
+    "pre-commit": "lint-staged",
+    "test:ci": "jest --coverage --watchAll=false",
+    "security-audit": "npm audit && npm run lint:security",
+    "quality-check": "npm run lint && npm run test && npm run security-audit"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": ["eslint --fix", "prettier --write"],
+    "*.{json,md}": ["prettier --write"]
+  }
+}
+\```
+
+## Implementation Roadmap
+
+### Phase 1: Foundation (Weeks 1-2)
+- [ ] Implement automated linting and formatting
+- [ ] Set up basic security scanning
+- [ ] Establish testing infrastructure
+- [ ] Configure dependency monitoring
+
+### Phase 2: Enhancement (Weeks 3-4)
+- [ ] Implement advanced code quality tools
+- [ ] Set up comprehensive CI/CD pipeline
+- [ ] Add performance monitoring
+- [ ] Establish documentation standards
+
+### Phase 3: Optimization (Weeks 5-8)
+- [ ] Address identified technical debt
+- [ ] Implement architecture improvements
+- [ ] Optimize performance bottlenecks
+- [ ] Enhance security measures
+
+## Metrics and KPIs
+
+### Success Metrics
+- **Code Quality Score**: [Target improvement percentage]
+- **Test Coverage**: [Target coverage percentage]
+- **Security Vulnerabilities**: [Target reduction count]
+- **Build Time**: [Target improvement percentage]
+- **Developer Productivity**: [Subjective improvement measures]
+
+### Monitoring Dashboard
+\```yaml
+# Recommended metrics to track
+code_quality:
+  - maintainability_index
+  - cyclomatic_complexity
+  - test_coverage
+  - documentation_coverage
+
+security:
+  - vulnerability_count
+  - dependency_freshness
+  - security_scan_score
+
+performance:
+  - build_time
+  - test_execution_time
+  - deployment_frequency
+  - lead_time_for_changes
+\```
+
+---
+
+**Note**: This evaluation should be updated quarterly or after major releases to track progress and identify new opportunities for improvement.
+```
+
+## Implementation Guidelines
+
+### Getting Started
+
+1. **Choose Your Approach**:
+   - **New Projects**: Implement all rules from the start
+   - **Existing Projects**: Begin with initialization rule, then add others gradually
+
+2. **Setup Process**:
+   ```bash
+   # Create rules directory
+   mkdir -p .cursor/rules
+
+   # Create initialization rule
+   touch .cursor/rules/00-initialization.mdc
+
+   # Copy and customize templates
+   # Modify each rule based on your specific technology stack
+   ```
+
+3. **Customization Strategy**:
+   - Replace template placeholders with actual project information
+   - Adapt language-specific examples to your tech stack
+   - Modify analysis commands for your specific tools and versions
+   - Update file references to match your project structure
+
+### Technology Stack Adaptations
+
+**Frontend Projects**: Focus on component patterns, state management, and build optimization
+
+**Backend APIs**: Emphasize security patterns, database interactions, and performance monitoring
+
+**Full-Stack Applications**: Combine frontend and backend patterns with additional deployment considerations
+
+**Mobile Applications**: Include platform-specific guidelines and native development patterns
+
+### Maintenance and Evolution
+
+- **Regular Updates**: Review and update rules monthly or after major changes
+- **Team Feedback**: Collect feedback on AI assistance quality and adjust rules accordingly
+- **Technology Changes**: Update rules when adopting new tools or frameworks
+- **Performance Monitoring**: Track AI response quality and adjust rule specificity as needed
+
+This comprehensive rule system provides a foundation for consistent, high-quality AI-assisted development across any technology stack, with built-in mechanisms for evaluation, improvement, and adaptation to changing project needs.

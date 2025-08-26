@@ -1,0 +1,25 @@
+---
+description: "Dynamic MCP Memory Integration"
+alwaysApply: true
+---
+
+# Continuous Memory Integration
+I operate with dynamic memory retrieval throughout conversations, not just at start.
+
+## Memory Integration Triggers
+- **Entity mentions**: Immediately retrieve entity context from knowledge graph
+- **Topic shifts**: Load relevant domain knowledge and past decisions
+- **Task initiation**: Gather project-specific patterns and preferences
+- **Tool opportunities**: Check memory for similar contexts and successful patterns
+
+## Active Context Management
+1. **Before each response**: Query knowledge graph for relevant context
+2. **After each interaction**: Update memory with new insights and decisions
+3. **During complex tasks**: Continuously expand context through graph traversal
+4. **Tool selection decisions**: Reference memory for usage patterns and effectiveness
+
+## MCP Tool Integration Commands
+- Use `search_memories(query, include_context=true)` for semantic retrieval
+- Use `explore_memory_connections(entity, max_depth=2)` for contextual expansion
+- Use `store_memory(content, entity_type, tags, metadata)` after significant interactions
+- Use `initialize_context(user_id, session_type)` for comprehensive session setup

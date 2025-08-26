@@ -1,0 +1,179 @@
+# LLM Git Safety Rule - CRITICAL
+
+## 🚨 ABSOLUTE PROHIBITION - NO EXCEPTIONS
+
+**The LLM is STRICTLY FORBIDDEN from executing any git commands that modify repository state or history.**
+
+### ❌ NEVER EXECUTE THESE COMMANDS:
+
+#### Git State Modification Commands
+- `git commit` - Never commit code on behalf of user
+- `git add` - Never stage files automatically  
+- `git push` - Never push changes to remote repositories
+- `git pull` - Never pull changes that could modify working directory
+- `git merge` - Never merge branches automatically
+- `git rebase` - Never rebase commits or modify history
+- `git reset` - Never reset repository state
+- `git checkout` - Never switch branches or restore files
+- `git stash` - Never stash or apply stashed changes
+- `git cherry-pick` - Never cherry-pick commits
+- `git apply` - Never apply patches automatically
+- `git am` - Never apply mailbox patches
+
+#### Repository Structure Commands
+- `git init` - Never initialize new repositories
+- `git clone` - Never clone repositories automatically
+- `git remote add/remove/set-url` - Never modify remote configurations
+- `git submodule` - Never modify submodule configurations
+- `git worktree` - Never manage worktrees
+
+#### History Modification Commands
+- `git commit --amend` - Never amend commits
+- `git revert` - Never create revert commits automatically
+- `git filter-branch` - Never filter repository history
+- `git reflog expire` - Never expire reflog entries
+
+### ✅ ALLOWED READ-ONLY COMMANDS:
+
+#### Information Gathering (Read-Only)
+- `git status` - Check repository status
+- `git log` - View commit history
+- `git show` - Display commit details
+- `git diff` - Show differences
+- `git ls-files` - List tracked files
+- `git branch -v` - List branches (view only)
+- `git remote -v` - List remotes (view only)
+- `git config --list` - View configuration (read-only)
+
+### 🔒 SECURITY RATIONALE:
+
+1. **User Control**: Only humans should decide what gets committed and when
+2. **Code Review**: All commits should be intentional and reviewed by the developer
+3. **History Integrity**: Repository history should never be modified by automated tools
+4. **Branch Safety**: Branch switching and merging require human judgment
+5. **Remote Safety**: Network operations (push/pull) require explicit user authorization
+
+### 📋 SAFE ALTERNATIVES:
+
+#### Instead of Automatic Commits:
+```bash
+# ❌ NEVER DO THIS:
+git add .
+git commit -m "AI generated commit"
+
+# ✅ DO THIS INSTEAD:
+echo "Files ready to commit:"
+git status --porcelain
+echo ""
+echo "To commit manually:"
+echo "  git add <files>"
+echo "  git commit -m \"your message\""
+```
+
+#### Instead of Automatic Staging:
+```bash
+# ❌ NEVER DO THIS:
+git add docs/new-file.md
+
+# ✅ DO THIS INSTEAD:
+echo "New file created: docs/new-file.md"
+echo "To stage: git add docs/new-file.md"
+```
+
+#### Instead of Branch Operations:
+```bash
+# ❌ NEVER DO THIS:
+git checkout -b feature/new-feature
+
+# ✅ DO THIS INSTEAD:
+echo "To create new branch:"
+echo "  git checkout -b feature/new-feature"
+```
+
+### 🛡️ ENFORCEMENT MECHANISMS:
+
+#### In Shell Scripts:
+```bash
+# Always provide instructions, never execute git modifications
+log_info "To commit changes:"
+echo "  git add docs/"
+echo "  git commit -m \"your commit message\""
+echo "  git push"
+```
+
+#### In Documentation:
+- Always provide manual git commands for users to execute
+- Never include git commit commands in automated scripts
+- Clearly separate read-only git operations from modification operations
+
+#### In Code Examples:
+```bash
+# ✅ GOOD: Show what to do
+echo "Run these commands manually:"
+echo "  git add src/new-feature.js"
+echo "  git commit -m \"feat: add new feature\""
+
+# ❌ BAD: Execute automatically
+# git add src/new-feature.js
+# git commit -m "feat: add new feature"
+```
+
+### 🚨 VIOLATION CONSEQUENCES:
+
+If the LLM attempts to execute forbidden git commands:
+1. **STOP IMMEDIATELY** - Do not execute the command
+2. **EXPLAIN WHY** - Reference this safety rule
+3. **PROVIDE ALTERNATIVE** - Show manual commands user should run
+4. **APOLOGIZE** - Acknowledge the safety violation attempt
+
+### 📝 ACCEPTABLE WORKFLOW:
+
+1. **LLM Creates/Modifies Files** ✅
+2. **LLM Runs `git status` to show changes** ✅  
+3. **LLM Provides manual git commands** ✅
+4. **User decides what to commit** ✅
+5. **User executes git commands manually** ✅
+
+### 🎯 EXAMPLES OF PROPER BEHAVIOR:
+
+#### Creating New Files:
+```bash
+# After creating files
+echo "Created files:"
+echo "  - src/Player.cs"
+echo "  - test/PlayerTests.cs"
+echo ""
+echo "To commit these changes:"
+echo "  git add src/Player.cs test/PlayerTests.cs"
+echo "  git commit -m \"feat: implement player controller\""
+```
+
+#### Showing Changes:
+```bash
+# Show what changed (read-only)
+git status --porcelain
+echo ""
+echo "To stage all changes: git add ."
+echo "To commit: git commit -m \"your message\""
+```
+
+#### Multiple File Updates:
+```bash
+# After updating multiple files
+echo "Updated files:"
+ls -la docs/chat-logs/sessions/
+echo ""
+echo "To commit all chat logs:"
+echo "  git add docs/chat-logs/"
+echo "  git commit -m \"docs: update chat sessions\""
+```
+
+## 🔐 REMEMBER: SAFETY FIRST
+
+**The user maintains complete control over their repository. The LLM's role is to create, modify, and suggest - never to commit, push, or alter git history.**
+
+**When in doubt, provide instructions instead of executing commands.**
+description:
+globs:
+alwaysApply: false
+---

@@ -1,0 +1,26 @@
+---
+description: "Proactive MCP Tool Utilization"
+globs:
+alwaysApply: true
+---
+# ReAct Framework for Tool Usage
+Apply Think → Act → Observe → Repeat pattern for all tool interactions.
+
+## Automatic Tool Triggers
+**Project Context Cues**:
+- File references → Retrieve file context and related project memories
+- Architecture discussions → Load design patterns and past architectural decisions
+- Error patterns → Search for similar issues and successful resolutions
+- CLI development tasks → Load CLI best practices and implementation patterns
+
+**OAuth/Server Development Cues**:
+- Authentication mentions → Retrieve OAuth patterns and security requirements
+- API design discussions → Load REST/GraphQL standards and team preferences
+- Deployment planning → Access enterprise deployment patterns and constraints
+
+## Tool Selection Algorithm
+1. **Parse context for capability needs**: What information/actions are required?
+2. **Map to available MCP tools**: Match needs to specific tool capabilities
+3. **Prioritize based on memory**: Use past success patterns to guide selection
+4. **Execute with context awareness**: Maintain project scope throughout tool usage
+5. **Update memory with outcomes**: Store tool effectiveness for future optimization
