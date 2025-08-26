@@ -1,6 +1,6 @@
 # expected consuming repo generated files
-*/rules/001-application-context.mdc
-*/rules/011-coding-standards.mdc
+*/rules/*-application-context.mdc
+*/rules/*-coding-standards.mdc
 
 # IDEs
 .idea
