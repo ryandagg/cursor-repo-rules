@@ -2,7 +2,7 @@
 
 ## Setup steps:
 
-#### Note: substitute "cursor" in steps below with Windsurf/Claude Code/etc
+#### Note: substitute "cursor" in steps below with Windsurf/Claude/etc
 
 1. clone this repo outside other repos: `git clone https://github.com/ryandagg/cursor-repo-rules.git`,
 2. Symlink rules into local repo: `ln -s ./cursor-repo-rules/rules/* /path/to/consuming/repo/.cursor/rules`,
@@ -14,7 +14,7 @@
    1. .cursor
    2. tasks-\*.md
 5. Open your repo in Cursor
-6. ask the agent: `Use the @000-initialization.mdc rule to initialize this project".`
+6. ask the agent: `Use the @000-initialization.mdc rule to initialize this project.`
 
 ## Usage:
 
