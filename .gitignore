@@ -1,0 +1,7 @@
+# consuming repo files
+001-application-context.mdc
+
+# IDEs
+.idea
+.vscode
+.cursor
