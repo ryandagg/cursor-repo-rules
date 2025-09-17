@@ -5,7 +5,7 @@
 #### Note: substitute "cursor" in steps below with Windsurf/Claude/etc
 
 1. clone this repo outside other repos: `git clone https://github.com/ryandagg/cursor-repo-rules.git`
-2. Symlink rules into local repo: copy all files in root/rules of this repo to /path/to/consuming/repo/.cursor/rules. At the time of writing, Cursor does not support any other way to use rules.
+2. copy all files in cursor-repo-rules/rules of this repo to /path/to/consuming/repo/.cursor/rules. At the time of writing, Cursor does not support any other way to use rules.
 3. Install these local MCP servers into Cursor
    1. [Memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)
    2. [Sequential Thinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)
