@@ -4,8 +4,8 @@
 
 #### Note: substitute "cursor" in steps below with Windsurf/Claude/etc
 
-1. clone this repo outside other repos: `git clone https://github.com/ryandagg/cursor-repo-rules.git`,
-2. Symlink rules into local repo: `ln -s ./cursor-repo-rules/rules/* /path/to/consuming/repo/.cursor/rules`,
+1. clone this repo outside other repos: `git clone https://github.com/ryandagg/cursor-repo-rules.git`
+2. Symlink rules into local repo: copy all files in root/rules of this repo to /path/to/consuming/repo/.cursor/rules. At the time of writing, Cursor does not support any other way to use rules.
 3. Install these local MCP servers into Cursor
    1. [Memory](https://github.com/modelcontextprotocol/servers/tree/main/src/memory)
    2. [Sequential Thinking](https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking)
@@ -35,8 +35,3 @@ And it should have all the context it needs to do the thing.
 There's also a code reviewer rule you can include in a request to review a PR, if you have the Github MCP server configured you can just provide a link to the PR and it will look up the PR.
 
 There's a retro rule you can use to refine your rules as the project changes over time.
-
-## TODO:
-
-- Create a user-friendly bash script to move new rule files to this repo locally and symlink them back into the consuming repo.
-- find a better approach than manual symlink setup. Nested repos used to be tedious/confusing, but now? 
